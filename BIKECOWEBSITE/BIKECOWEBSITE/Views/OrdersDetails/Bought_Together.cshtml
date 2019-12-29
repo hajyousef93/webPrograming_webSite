@@ -1,0 +1,41 @@
+﻿@using BIKECOWEBSITE.Models
+@model productlistitem
+@{ var tempval = ""; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@Styles.Render("~/Content/css")
+
+<h2>Frequently Bought Together</h2>
+<h4>Please choose one or more items using mouse & ctrl key to predict:</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.ListBoxFor(Model => Model.chossenproducts, Model.chossproducts, new { size = 10 })
+    <hr />
+    <input type="submit" name="btn" value="Select Item">
+}
+<h4>Your choice is:</h4>
+@if (TempData["selected"] != null)
+{
+    <span>
+        @TempData["selected"].ToString()
+    </span>
+    <br />
+    tempval = TempData["selected"].ToString();
+    if (tempval != "You Don't choose any item!")
+    {
+        <h4 style="color:red">Predicted 3 items that matches your choice is:</h4>
+       
+        <span style="color:red">
+            @TempData["output"].ToString()
+        </span>
+        
+    }
+}
+
+

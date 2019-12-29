@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DailyDS" targetNamespace="http://tempuri.org/DailyDS.xsd" xmlns:mstns="http://tempuri.org/DailyDS.xsd" xmlns="http://tempuri.org/DailyDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ADMDataBaseConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ADMDataBaseConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ADMDataBaseConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ADMDataBaseConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT YEAR(DateOfPurchase) AS Sales_Year, MONTH(DateOfPurchase) AS Sales_Month, DAY(DateOfPurchase) AS Sales_Day, SUM(PriseOfOrder) AS TotalSales FROM Orders GROUP BY YEAR(DateOfPurchase), MONTH(DateOfPurchase), DAY(DateOfPurchase) ORDER BY Sales_Year, Sales_Month, Sales_Day</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Sales_Year" DataSetColumn="Sales_Year" />
+              <Mapping SourceColumn="Sales_Month" DataSetColumn="Sales_Month" />
+              <Mapping SourceColumn="Sales_Day" DataSetColumn="Sales_Day" />
+              <Mapping SourceColumn="TotalSales" DataSetColumn="TotalSales" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DailyDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DailyDS" msprop:Generator_UserDSName="DailyDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Sales_Year" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSales_Year" msprop:Generator_ColumnPropNameInRow="Sales_Year" msprop:Generator_ColumnPropNameInTable="Sales_YearColumn" msprop:Generator_UserColumnName="Sales_Year" type="xs:int" minOccurs="0" />
+              <xs:element name="Sales_Month" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSales_Month" msprop:Generator_ColumnPropNameInRow="Sales_Month" msprop:Generator_ColumnPropNameInTable="Sales_MonthColumn" msprop:Generator_UserColumnName="Sales_Month" type="xs:int" minOccurs="0" />
+              <xs:element name="Sales_Day" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSales_Day" msprop:Generator_ColumnPropNameInRow="Sales_Day" msprop:Generator_ColumnPropNameInTable="Sales_DayColumn" msprop:Generator_UserColumnName="Sales_Day" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalSales" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalSales" msprop:Generator_ColumnPropNameInRow="TotalSales" msprop:Generator_ColumnPropNameInTable="TotalSalesColumn" msprop:Generator_UserColumnName="TotalSales" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

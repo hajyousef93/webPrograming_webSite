@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BIKECOWEBSITE.Models.Rates_Comments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rates)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Product1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rates)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Product1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            @Html.ActionLink("Comments", "Commentsfull", new { id = item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>

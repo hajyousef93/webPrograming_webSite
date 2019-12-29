@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17099bbcca974b708706c30577860b71" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="ADMDataBaseModel.Category" Width="2" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMDataBaseModel.Customer" Width="1.75" PointX="1.375" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMDataBaseModel.Order" Width="1.75" PointX="4.375" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMDataBaseModel.OrdersDetail" Width="2" PointX="6.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMDataBaseModel.Product" Width="1.75" PointX="9.625" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="ADMDataBaseModel.FK_OrdersDetails_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMDataBaseModel.FK_Customers_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMDataBaseModel.FK_OrdersDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMDataBaseModel.FK_OrdersDetails_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ADMDataBaseModel.Rates_Comments" Width="2" PointX="6.75" PointY="5.125" />
+        <AssociationConnector Association="ADMDataBaseModel.FK_Rates_Comments_Products" />
+        <AssociationConnector Association="ADMDataBaseModel.FK__Rates_Com__User___31B762FC" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

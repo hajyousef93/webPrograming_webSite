@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BIKECOWEBSITE.Models.Rates_Comments>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@*@{ decimal count = 0;
+    decimal allrates = 0;
+    decimal a = 0;}*@
+<h3 class="text-capitalize">comments:</h3>
+
+@{ if (Model.Count() == 0) { <h5> No Comments Yet.</h5>} }
+<br>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+
+
+
+@*<th>
+        @Html.DisplayNameFor(model => model.Comments)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Rates)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Product.Product1)
+    </th>
+    <th></th>*@
+
+@foreach (var item in Model)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+
+    <h5>User @item.User_ID says:</h5>
+    <p class=w3-text-grey>
+        @Html.DisplayFor(modelItem => item.Comments)
+    </p>
+
+
+
+    @*<h2>Star Rating</h2>*@
+    @*@Html.DisplayFor(modelItem => item.Rates)*@
+    if (@item.Rates.Value == 1)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        //count = count + item.Rates.Value;
+
+    }
+    else if (@item.Rates.Value == 2)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        //count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 3)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        //count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 4)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        //count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 5)
+    {
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        //count = count + item.Rates.Value;
+    }
+    <p>======================</p>
+}
+
+

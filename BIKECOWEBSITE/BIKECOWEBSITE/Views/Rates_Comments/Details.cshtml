@@ -1,0 +1,44 @@
+﻿@model BIKECOWEBSITE.Models.Rates_Comments
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rates_Comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+        </dl>
+        </div>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Rates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

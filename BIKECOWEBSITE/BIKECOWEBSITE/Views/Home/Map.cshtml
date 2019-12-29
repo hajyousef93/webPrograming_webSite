@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<head>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTZqkJjSjnUjgBLrWFMClKR_TMqP87roA&callback=initMap"
+            type="text/javascript"></script>
+</head>   
+ <div>
+<div id="modal-map" style="height:50%; width:50%;position:absolute;overflow:hidden;"></div> 
+</div>
+    <script>
+        var uluru = { lat: 33.51143, lng: 36.273299 };
+        var map = new google.maps.Map(document.getElementById('modal-map'), {
+            zoom: 19,
+            center: uluru,
+            mapTypeId: google.maps.MapTypeId.HYBRID,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_BOTTOM
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+            position: google.maps.ControlPosition.LEFT_BOTTOM
+            },
+            mapTypeControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            
+            },
+        });
+
+        </Script>

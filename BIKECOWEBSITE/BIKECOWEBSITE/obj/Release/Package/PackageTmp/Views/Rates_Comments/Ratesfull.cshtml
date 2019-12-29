@@ -1,0 +1,143 @@
+﻿
+@model IEnumerable<BIKECOWEBSITE.Models.Rates_Comments>
+
+@{
+    ViewBag.Title = "Rate";
+    Layout = null;
+}
+@{ decimal count = 0;
+    decimal allrates = 0;
+    decimal a = 0;}
+<div style="padding-left:16px;">
+@*<h3 class="text-capitalize">Over All Rating:</h3>*@
+
+@foreach (var item in Model)
+{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+
+
+    @*<h2>Star Rating</h2>*@
+    @*@Html.DisplayFor(modelItem => item.Rates)*@
+    if (@item.Rates.Value == 1)
+    {
+        @*<span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>*@
+        count = count + item.Rates.Value;
+
+    }
+    else if (@item.Rates.Value == 2)
+    {
+        @*<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>*@
+        count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 3)
+    {
+        @*<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>*@
+        count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 4)
+    {
+        @*<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>*@
+        count = count + item.Rates.Value;
+    }
+    else if (@item.Rates.Value == 5)
+    {
+        @*<span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>*@
+        count = count + item.Rates.Value;
+    }
+
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Rates)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Product1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>*@
+
+}
+@{ if (Model.Count() != 0)
+    {
+        a = count / Model.Count();
+        allrates = (int)Math.Ceiling(a);
+        @*<h5>Over all rating is:@allrates.</h5>*@
+    }
+    else if (Model.Count() == 0)
+    {
+        allrates = 0;
+        <h5>Not Rated Yet.</h5>
+    }
+}
+  @if (allrates == 1)
+    {
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+    }
+    else if (allrates == 2)
+    {
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    }
+    else if (allrates == 3)
+    {
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    }
+    else if (allrates == 4)
+    {
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    }
+    else if (allrates == 5)
+    {
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    }
+
+
+    </div>
+

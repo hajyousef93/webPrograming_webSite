@@ -1,0 +1,162 @@
+﻿
+@model  BIKECOWEBSITE.Models.Product
+@*@model IEnumerable<object>
+    @{
+        List<BIKECOWEBSITE.Models.Rates_Comments> lsrate = Model.ToList()[0] as List<BIKECOWEBSITE.Models.Rates_Comments>;
+        List<BIKECOWEBSITE.Models.Product> lsproduct = Model.ToList()[1] as List<BIKECOWEBSITE.Models.Product>;
+    }*@
+@{ ViewBag.Title = "Product Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style>
+
+    p.b {
+        height: 20px;
+    }
+</style>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@Styles.Render("~/Content/css")
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<body class="w3-content" style="max-width:1200px">
+
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+            <br>
+            <br>
+            @Html.Action("Commentsfull", "Rates_Comments", new { id = Html.DisplayFor(model => model.Product1) })
+        </div>
+    </nav>
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top w3-hide-large w3-#f8f8f8 w3-xlarge">
+        <br>
+        <div class="w3-bar-item w3-padding-24 w3-wide"></div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right " style="margin-right:24px; padding-top:20px;" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Top header -->
+        <header class="w3-container w3-xlarge">
+            <p class="w3-left b w3-padding-24">@Html.DisplayFor(model => model.Product1)</p>
+            <p class="w3-right b w3-padding-24" style="font-size:16px;">
+                @Html.ActionLink(" Continue Shopping", "Index", "Products", null, new { @class = "w3-button w3-black w3-round fas fa-cart-arrow-down", style = "text-decoration:none" })
+
+                @Html.ActionLink(" Add To Cart", "Ordernow", "Cart", new { id = Html.DisplayFor(model => model.Product1) }, new { @class = "w3-button w3-black w3-round fas fa-cart-plus", style = "text-decoration:none" })
+
+            </p>
+        </header>
+
+        <!-- Image header -->
+
+            <hr />
+            <h3 class="text-capitalize" style="padding-left:16px;" id="rate">Over All Rating:</h3>
+            @*<div class="w3-display-topright w3-text-black" style="padding:0px 0px">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h1 class="w3-xxxlarge w3-hide-small">warranty</h1>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h4 class="w3-xlarge w3-hide-small">1 year real warranty</h4>
+                <img src="~/pics/1year.png" style="width:20%">
+            </div>*@
+            @Html.Action("Ratesfull", "Rates_Comments", new { id = Html.DisplayFor(model => model.Product1) })
+
+            <dl class="dl-horizontal" style="padding-left:200px;">
+                <dt>
+                    Price
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SellPrice)$
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Manufacturer)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Manufacturer)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Specs)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Specs)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Hints)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Hints)
+                </dd>
+                <dd>
+                    <br>
+
+                    <div class="w3-col l3 s6">
+                        <div class="w3-container">
+
+                            <div class="w3-display-container">
+                                <img src="/pics/@Html.DisplayFor(model => model.Pic)" style="width:180%">
+                                <span class="w3-tag w3-display-topleft">@Html.DisplayFor(Model => Model.Offers)</span>
+                                @*<div class="w3-display-middle w3-display-hover">
+                            @Html.ActionLink(" Buy Now", "Details", "Products", new { id = image.Product1 }, new { @class = "fa fa-shopping-cart w3-button w3-black", style = "text-decoration: none" })*@
+                            </div>
+                        </div>
+
+                        @*<p>@image.Product1<br><b>@image.SellPrice$</b></p>*@
+                    </div>
+
+                    @*<img src="/pics/@Html.DisplayFor(model => model.Pic)" style="width:30%">*@
+                </dd>
+            </dl>
+            <br>
+        </div>
+        
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+
+    </script>
+
+
+</body>

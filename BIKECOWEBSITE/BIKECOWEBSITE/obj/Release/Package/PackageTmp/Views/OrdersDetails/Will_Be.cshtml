@@ -1,0 +1,42 @@
+﻿@using BIKECOWEBSITE.Models
+@model productlistitem
+@{ string[] splited = { "" };}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@Styles.Render("~/Content/css")
+
+<h2>Predicted Income</h2>
+<h4>Please choose how many days you want to predict:</h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("days", null, htmlAttributes: new { @class = "form-control", @style = "width:220px" })
+    <hr />
+    <input type="submit" name="btn" value="Predict" style="width:220px;">
+}
+<h4>Predicted calculations based on "newest invoice purchasing date":</h4>
+
+@if (TempData["output"] != null)
+{
+    <h4 style="color:red">Predicted sales that matches your choice is:</h4>
+    splited = TempData["output"].ToString().Split(',');
+    for (int i = 0; i <= splited.Length - 1; i++)
+    {
+        int num = i + 1;
+        <br />
+        <span style="color:red">
+            Day @num :
+            @splited[i]$
+        </span>
+    }
+}
+
+
+

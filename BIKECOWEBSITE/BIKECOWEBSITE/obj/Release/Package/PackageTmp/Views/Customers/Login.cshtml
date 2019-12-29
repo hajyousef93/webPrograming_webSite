@@ -1,0 +1,73 @@
+﻿@model BIKECOWEBSITE.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+
+<form id="myForm">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Email - User Name", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @style = "width:200px", @placeholder = "Email", @id = "line" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Password", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control", @style = "width:200px", @placeholder = "Password", @id = "line1" } })
+            </div>
+            <br />
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <a href="#" class="btn btn-success col-md-offset-11" onclick="LoginUser()" style="width:200px;">Login</a>
+                <br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5">
+                <a href="#" class="btn btn-default col-md-offset-11" data-dismiss="modal" style="width:200px;">Cancel</a>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <script>
+
+        var LoginUser = function () {
+            var data = $("#myForm").serialize();
+            $.ajax({
+                type: "Post",
+                url: "/Customers/LoginUser",
+                data: data,
+                success: function (response) {
+                    if (response == "fail") {
+
+                        alert('Please check your credentials again');
+                        $("#line").val("");
+                        $("#line1").val("");
+                    }
+                    else if (response == "Admin") {
+
+                        window.location.href = "/Products/Index";
+                    }
+                    else {
+                        window.location.href = "/Home/Index";
+                    }
+                }
+            })
+        }
+    </script>
+
+
+

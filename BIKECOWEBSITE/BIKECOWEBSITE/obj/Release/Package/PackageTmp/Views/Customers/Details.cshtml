@@ -1,0 +1,122 @@
+﻿@model BIKECOWEBSITE.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marital_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marital_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Income)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Income)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Children)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Children)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Home_Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Home_Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Commute_Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Commute_Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Buy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

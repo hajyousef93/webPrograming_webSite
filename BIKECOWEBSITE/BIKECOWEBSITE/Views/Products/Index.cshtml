@@ -1,0 +1,162 @@
+﻿@model IEnumerable<BIKECOWEBSITE.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@Styles.Render("~/Content/css")
+
+<style>
+    table.dataTable thead .sorting_asc {
+        background: url("http://cdn.datatables.net/1.10.0/images/sort_asc.png") no-repeat center left;}
+    table.dataTable thead .sorting_desc {
+        background: url("http://cdn.datatables.net/1.10.0/images/sort_desc.png") no-repeat center left;}
+    table.dataTable thead .sorting {
+        background: url("http://cdn.datatables.net/1.10.0/images/sort_both.png") no-repeat center left;}
+    </style>
+<body>
+    <h2>Products</h2>
+
+    <form class="form-vertical">
+        @if (Session["type"] != null)
+        {
+            @Html.ActionLink("Check Categories", "Create", "Categories/Index", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Create Category", "Create", "Categories/Create", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Create Product", "Create", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Monthly Report", "monthlyreport", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Daily Report", "Dailyreport", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Bought Together", "Bought_Together", "OrdersDetails", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Classify Customer", "Classify_customer", "Customers", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Get Recommendation", "Get_Recommendation", "Customers", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Will He Buy!", "He_will_buy", "Customers", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+            @Html.ActionLink("Time Series", "Will_Be", "OrdersDetails", null, new { @class = "w3-button w3-round", style = "text-decoration:none; width:200px; padding:2px;background-color:#222;color:white;" })
+
+            <br />
+            <br />
+        }
+
+    </form>
+
+    <table id="MyDataTable" class="table" style="table-layout:auto; width:100%;font-size:100%" align="center"  >
+        <thead>
+            <tr>
+                <th style="padding:18px;">
+                     Picture
+                </th>
+                <th style="padding:18px;">
+                     Product
+                </th>
+                <th style="padding:18px;">
+                     Category
+                </th>
+                <th style="padding:18px;">
+                     Price
+                </th>
+                <th style="padding:18px;">
+                     Specification
+                </th>
+                <th style="padding:18px;">
+                     Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td width="20%">
+                    <div class="w3-container" style="width:50%">
+                        <div class="w3-display-container">
+                            <img src="/pics/@Html.DisplayFor(modelItem => item.Pic)" style="width:100%">
+                            <span class="w3-tag w3-display-bottomright">@Html.DisplayFor(ModelItem => item.Offers)</span>
+                            @*<div class="w3-display-middle w3-display-hover">
+                        @Html.DisplayFor(ModelItem => item.Offers)
+                        <h4 style="color:red"> @Html.DisplayFor(ModelItem => item.Offers) </h4>
+
+                    </div>*@
+                        </div>
+                    </div>
+                </td>
+                <td width="18%">
+                    <br />
+                    <br />
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Product1)
+
+                </td>
+                <td width="12%">
+                    <br />
+                    <br />
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Category)
+
+                </td>
+
+                @if (item.SellPrice.HasValue)
+                {
+                    <td width="8%">
+                        <br />
+                        <br />
+                        <br />
+                        @Html.DisplayFor(modelItem => item.SellPrice.Value)$
+                    </td>
+                }
+                else 
+                {
+                    <td width="8%">
+                        <br />
+                        <br />
+                        @Html.DisplayFor(modelItem => item.SellPrice)$
+                    </td>
+                }
+
+                <td width="20%">
+                    <br />
+                    <h4>@Html.Action("Ratesfull", "Rates_Comments", new { id = Html.DisplayFor(modelItem => item.Product1) })</h4>
+
+                    @Html.DisplayFor(modelItem => item.Specs)
+                </td>
+                
+                @if (Session["type"] == null)
+                {
+                    
+                <td width="10%" style="font-size:90%" colspan="2">
+                    <br />
+                    @Html.ActionLink(" Details", "Details", "Products", new { id = Html.DisplayFor(modelItem => item.Product1) }, new { @class = "w3-button btn-block w3-black w3-round fa fa-info-circle", style = "text-decoration:none" })
+                    @Html.ActionLink(" Add To Cart", "Ordernow", "Cart", new { id = Html.DisplayFor(modelItem => item.Product1) }, new { @class = "w3-button btn-block w3-black w3-round fa fa-shopping-cart", style = "text-decoration:none" })
+                </td>
+                }
+                else if (Session["type"] != null)
+                {
+                <td width="10%" style="font-size:80%" colspan="2">
+                    <br />
+                    <br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Product1 }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Product1 }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Product1 })
+                </td>
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        $('#MyDataTable').DataTable({
+        "columns": [
+            null,
+            null,
+            null,
+            { "type": "html-num-fmt"},
+            null,
+            null
+        ]
+        });
+    </script>
+  
+</body>

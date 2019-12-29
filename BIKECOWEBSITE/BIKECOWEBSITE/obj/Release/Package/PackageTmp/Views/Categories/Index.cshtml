@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BIKECOWEBSITE.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@Styles.Render("~/Content/css")
+
+<h2>Categories</h2>
+
+<form class="form-vertical">
+    @if (Session["type"] != null)
+    {
+        @Html.ActionLink("Create New Category", "Create", null, new { @class = "w3-button w3-black w3-round", style = "text-decoration:none; width:170px; padding:2px;" })
+     
+        @Html.ActionLink("Create New Product", "Create", "Products/Create", null, new { @class = "w3-button w3-black w3-round", style = "text-decoration:none; width:170px; padding:2px;" })
+    }
+</form>
+<table id="MyDataTable" class="table" style="table-layout:auto; width:100%;font-size:100%" align="center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Products Categories")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category1)
+                </td>
+                @if (Session["type"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Category1 }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Category1 })
+                    </td>
+                }
+            </tr>
+        }
+    <tbody>
+</table>
+
+<script>
+        $('#MyDataTable').DataTable({
+        "columns": [
+            null,
+            null,
+            null,
+            { "type": "html-num-fmt"},
+            null,
+            null
+        ]
+} );
+
+
+</script>

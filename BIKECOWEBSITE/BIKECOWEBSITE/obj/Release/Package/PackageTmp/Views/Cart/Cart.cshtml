@@ -1,0 +1,98 @@
+﻿
+
+@using BIKECOWEBSITE.Controllers
+@using BIKECOWEBSITE.Models
+@{ double sum = 0;
+    var emptytext = string.Empty;
+    var solditem = new List<string>();
+    var shoo = new List<string>();
+    var Qut = new List<int>();
+    int qty = 0; ;
+    }
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@Styles.Render("~/Content/css")
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<style>
+    th, td.b {
+        height: 10px;
+        font-size: 90%;
+    }
+
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    <header class="w3-container w3-large">
+        <p class="w3-left b w3-padding-24">MY CART</p>
+    </header>
+    <br />
+    <table style="text-align:center; table-layout:fixed; width:100%; font-size:16px">
+        <tr>
+            <th style="border:1px solid gray; text-align:center; background-color:lightgray">Item</th>
+            <th style="border:1px solid gray; text-align:center; background-color:lightgray" colspan="3">Product Id</th>
+            <th style="border:1px solid gray;text-align:center; background-color:lightgray">Price</th>
+            <th style="border:1px solid gray;text-align:center; background-color:lightgray" colspan="3">Quantity</th>
+            <th style="border:1px solid gray;text-align:center; background-color:lightgray">Sub Total</th>
+        </tr>
+        <tr>
+            <th class="b"></th>
+        </tr>
+        @foreach (Item item in (List<Item>)Session["cart"])
+        {
+
+            double suumm = 0;
+            if (item.Product.SellPrice.HasValue)
+            {
+                suumm = item.Product.SellPrice.Value;
+            }
+            sum += (suumm * item.Quantity);
+            solditem.Add(item.Product.Product1);
+            qty =qty+ item.Quantity;
+            Qut.Add(item.Quantity);
+
+            <tr>
+                <td width="30%">
+                    <div class="w3-display-container">
+                        <img src="/pics/@item.Product.Pic" style="width:50%;border:1px solid gray">
+                    </div>
+                </td>
+                <td width="30%" colspan="3">@item.Product.Product1</td>
+
+                <td width="15%">@item.Product.SellPrice$</td>
+                <td width="5%" colspan="3">
+                    @Html.ActionLink(" qty", "Deletenow", "Cart", new { id = item.Product.Product1 }, new { @class = "w3-button w3-black w3-round fa fa-minus-circle", style = "text-decoration:none; font-size:12px" })
+                    @item.Quantity
+                    @Html.ActionLink(" qty", "Ordernow", "Cart", new { id = item.Product.Product1 }, new { @class = "w3-button w3-black w3-round fa fa-plus-circle", style = "text-decoration:none; font-size:12px" })
+                </td>
+                <td width="20%">@(item.Product.SellPrice * item.Quantity)$</td>
+            </tr>
+            <tr>
+                <td class="b"></td>
+            </tr>
+        }
+        <tr></tr>
+    </table>
+    <br />
+    <h4>Cart Total: @sum$</h4>
+    <p class="w3-right b w3-padding-24" style="font-size:18px;">
+        @Html.ActionLink(" Continue Shopping", "Index", "Products", null, new { @class = "w3-button w3-black w3-round fas fa-cart-arrow-down", style = "text-decoration:none; width:200px" })
+        @*@Html.ActionLink(" Confirm Order", "Confirm_Order", "Orders", new { sum = @sum, cont = solditem.Count() }, new { @class = "w3-button w3-black w3-round fas fa-cart-arrow-down", style = "text-decoration:none; width:200px" })*@
+        @Html.ActionLink(" Start Invoice", "index1", "OrdersDetails", new { sum = @sum, cont =qty  }, new { @class = "w3-button w3-black w3-round fas fa-cart-arrow-down", style = "text-decoration:none; width:200px" })
+
+    </p>
+</body>
+</html>
